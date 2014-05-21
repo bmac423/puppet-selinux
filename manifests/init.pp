@@ -21,6 +21,7 @@
 class selinux(
   $mode         = 'enforcing',
   $installmake  = true,
+  $type         = 'targeted'
   ) {
   include selinux::params
 
@@ -33,5 +34,6 @@ class selinux(
 
   class { 'selinux::config':
       mode => $mode,
+      type => $type
   }
 }
