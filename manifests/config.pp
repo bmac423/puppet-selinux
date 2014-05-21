@@ -25,6 +25,12 @@ class selinux::config(
   package { 'libselinux-utils':
     ensure => present,
   }
+  
+  if $type == 'minimum' {
+	  package { 'selinux-policy-minimum':
+	    ensure => present
+	  }
+  }
 
   file { '/etc/selinux/config':
     ensure  => present,
